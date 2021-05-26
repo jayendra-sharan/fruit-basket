@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Input } from 'antd';
+import { Card, Input, Button } from 'antd';
 import { performLogin } from '../../util';
 import { useHistory } from 'react-router';
 
@@ -40,6 +40,7 @@ export default function LoginForm({
    * Submit button click handler
    */
   const handleClick = (e) => {
+    e.preventDefault();
     updateState({
       isLoading: true
     });
@@ -75,26 +76,30 @@ export default function LoginForm({
   console.log(loginState);
   return (
     <Card title="Login" className="login-form">
-      <Input
-        id="username"
-        placeholder="username"
-        type="text"
-        value={username}
-        onChange={handleChange}
-      />
-      <Input
-        id="password"
-        placeholder="password"
-        type="password"
-        value={password}
-        onChange={handleChange}
-      />
-      <button
-        onClick={handleClick}
-        type="primary"
-      >{
-        isLoading ? 'Logging In...' : 'Submit'
-      }</button>
+      <form onSubmit={handleClick}>
+        <Input
+          autoComplete="username"
+          id="username"
+          placeholder="username"
+          type="text"
+          value={username}
+          onChange={handleChange}
+        />
+        <Input
+          autoComplete="current-password"
+          id="password"
+          placeholder="password"
+          type="password"
+          value={password}
+          onChange={handleChange}
+        />
+        <Button
+          htmlType="submit"
+          type="primary"
+        >{
+          isLoading ? 'Logging In...' : 'Submit'
+        }</Button>
+      </form>
       <div className="login-error">
         { errorMessage }
       </div>
