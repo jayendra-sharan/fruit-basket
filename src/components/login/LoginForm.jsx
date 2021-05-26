@@ -73,7 +73,11 @@ export default function LoginForm({
   }
 
   const { username, password, errorMessage, isLoading } = loginState;
-  console.log(loginState);
+  
+  const disableLogin = () => {
+    return !username || !password || isLoading;
+  }
+
   return (
     <Card title="Login" className="login-form">
       <form onSubmit={handleClick}>
@@ -94,6 +98,7 @@ export default function LoginForm({
           onChange={handleChange}
         />
         <Button
+          disabled={disableLogin()}
           htmlType="submit"
           type="primary"
         >{
