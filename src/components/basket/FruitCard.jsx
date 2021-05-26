@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Button } from 'antd';
 
 export default function FruitCard ({
@@ -29,4 +30,9 @@ export default function FruitCard ({
       </div>
     </Card>
   )
+}
+
+FruitCard.propTypes = {
+  fruit: PropTypes.object.isRequired,
+  updateQuanity: PropTypes.func.isRequired
 }

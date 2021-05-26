@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Alert } from "antd";
 
 export default function Error({
@@ -13,4 +14,8 @@ export default function Error({
     />
   }
   return null;
+}
+
+Error.propTypes = {
+  error: PropTypes.object.isRequired
 }

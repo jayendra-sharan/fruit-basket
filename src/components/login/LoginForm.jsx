@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Input } from 'antd';
 import { performLogin } from '../../util';
 import { useHistory } from 'react-router';
@@ -99,4 +100,8 @@ export default function LoginForm({
       </div>
     </Card>
   )
+}
+
+LoginForm.propTypes = {
+  setLoginStatus: PropTypes.func.isRequired
 }

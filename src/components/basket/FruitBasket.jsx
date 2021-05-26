@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import Error from './Error';
 import { Card } from "antd";
 import FruitCard from './FruitCard'
@@ -95,3 +96,10 @@ export default function FruitBasket ({
   )
 }
 
+FruitBasket.propTypes = {
+  loginData: PropTypes.shape({
+    isLoggedIn: PropTypes.bool.isRequired,
+    user: PropTypes.object
+  }),
+  setLoginStatus: PropTypes.func.isRequired
+}
