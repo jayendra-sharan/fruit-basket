@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Card, Input } from 'antd';
 import { performLogin } from '../../util';
+import { useHistory } from 'react-router';
 
 export default function LoginForm({
   setLoginStatus
 }) {
+  const history = useHistory();
   const [loginState, updateLoginState] = useState({
     username: '',
     password: '',
@@ -52,7 +54,11 @@ export default function LoginForm({
         errorMessage: '',
       })
       if (response) {
-        setLoginStatus(true)
+        setLoginStatus({
+          status: true,
+          user: response
+        })
+        history.push('/home')
       }
     }).catch (error => {
       updateState({
@@ -88,7 +94,7 @@ export default function LoginForm({
       >{
         isLoading ? 'Logging In...' : 'Submit'
       }</button>
-      <div>
+      <div className="login-error">
         { errorMessage }
       </div>
     </Card>

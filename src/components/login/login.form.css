@@ -5,3 +5,6 @@
 .login-form input {
   margin-bottom: 10px;
 }
+.login-error {
+  margin-top: 40px;
+}

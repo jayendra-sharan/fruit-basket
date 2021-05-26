@@ -18,7 +18,7 @@ export function performLogin({ username, password }) {
     setTimeout(function () {
       const found = findUsers(username, password);
       if (found.length) {
-        resolve(found[0]);
+        resolve(AUTH_DATA[found[0]]);
       } else {
         reject(new Error("Invalid credentials"));
       }
